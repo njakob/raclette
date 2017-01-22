@@ -1,0 +1,9 @@
+[ignore]
+<PROJECT_ROOT>/lib/.*
+
+[libs]
+
+[include]
+
+[options]
+module.name_mapper='^core\/\(.*\)$' -> '<PROJECT_ROOT>/src/core/\1'
