@@ -1,3 +1,12 @@
 /* @flow */
 
-export type Loader = (filePath: string) => Promise<any>;
+export type LoaderOptions = {
+  file: string;
+};
+
+export type LoaderResult = {
+  loadedFile: string;
+  load(): Promise<any>;
+};
+
+export type Loader = (options: LoaderOptions) => LoaderResult;

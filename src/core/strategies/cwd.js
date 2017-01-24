@@ -3,10 +3,10 @@
 import path from 'path';
 import type { StrategyOptions } from './common';
 
-export default async function cwdStrategy({
+export default async function cwd({
   directory,
   name,
-}: StrategyOptions): Promise<*> {
+}: StrategyOptions): Promise<string[]> {
   return [
     path.join(directory || process.cwd(), name),
   ];

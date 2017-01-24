@@ -1,11 +1,25 @@
 /* @flow */
 /* eslint import/no-dynamic-require: 'off', global-require: 'off' */
 
-export default async function json(filePath: string): Promise<any> {
-  try {
-    // $FlowFixMe
-    return require(`${filePath}.js`);
-  } catch (err) {
-    return null;
-  }
+import type { LoaderOptions, LoaderResult } from './common';
+
+export default function json({
+  file,
+}: LoaderOptions): LoaderResult {
+  const loadedFile = `${file}.js`;
+
+  return {
+    loadedFile,
+    async load(): Promise<any> {
+      try {
+        // $FlowFixMe
+        return require(loadedFile);
+      } catch (error) {
+        if (error.code === 'MODULE_NOT_FOUND') {
+          return null;
+        }
+        throw error;
+      }
+    }
+  };
 }
