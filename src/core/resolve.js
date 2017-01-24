@@ -1,10 +1,12 @@
 /* @flow */
 
+import deepMerge from 'helpers/deepMerge';
 import type { Loader } from './loaders';
 import type { Strategy } from './strategies';
 
 export type ResolveOptions = {
   directory?: string;
+  greedy?: boolean;
   loaders: Loader[];
   name: string;
   strategies: Strategy[];
@@ -13,6 +15,7 @@ export type ResolveOptions = {
 export default async function resolve({
   directory,
   name,
+  greedy = false,
   strategies = [],
   loaders = [],
 }: ResolveOptions): Promise<any> {
@@ -26,10 +29,14 @@ export default async function resolve({
   });
   const dataCollection = await Promise.all(loadersPromises);
 
-  return dataCollection.reduce((data: any, acc: any): any => {
-    return {
-      ...acc,
-      ...data,
-    };
+  let result = {};
+  dataCollection.every((data: any): boolean => {
+    if (data !== null) {
+      result = deepMerge(result, data);
+      return greedy;
+    }
+
+    return true;
   });
+  return result;
 }
