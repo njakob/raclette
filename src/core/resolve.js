@@ -1,5 +1,6 @@
 /* @flow */
 
+import deepMerge from 'helpers/deepMerge';
 import type { Loader } from './loaders';
 import type { Strategy } from './strategies';
 
@@ -17,6 +18,7 @@ export type ResolveEntry = {
 };
 
 export type ResolveResult = {
+  result: any;
   entries: ResolveEntry[];
 };
 
@@ -56,7 +58,13 @@ export default async function resolve({
   });
   const entries = await Promise.all(loadersPromises);
 
+  let result = {};
+  entries.forEach((entry: ResolveEntry) => {
+    result = deepMerge(result, entry.result);
+  });
+
   return {
+    result,
     entries,
   };
 }
