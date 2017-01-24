@@ -6,4 +6,6 @@
 [include]
 
 [options]
+esproposal.export_star_as=enable
 module.name_mapper='^core\/\(.*\)$' -> '<PROJECT_ROOT>/src/core/\1'
+module.name_mapper='^helpers\/\(.*\)$' -> '<PROJECT_ROOT>/src/helpers/\1'

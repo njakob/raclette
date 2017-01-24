@@ -7,6 +7,14 @@
     "syntax-flow",
     "transform-flow-strip-types",
     [
+      "transform-runtime", {
+        "helpers": false,
+        "polyfill": false,
+        "regenerator": true,
+        "moduleName": "babel-runtime"
+      }
+    ],
+    [
       "module-resolver", {
         "root": ["./src"],
         "alias": {
