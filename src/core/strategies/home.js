@@ -1,12 +1,13 @@
 /* @flow */
 
+import os from 'os';
 import path from 'path';
 import type { StrategyOptions } from './common';
 
 export default async function home({
   name,
 }: StrategyOptions): Promise<string[]> {
-  const homeDirectory = process.env.HOME;
+  const homeDirectory = os.homedir();
   const results = [];
 
   if (homeDirectory) {
