@@ -1,8 +1,15 @@
 
-# breeze [![Build Status][build-status-image]][travis] [![ESLint Config][eslint-config-image]][eslint-config]
 # raclette [![Build Status][build-status-image]][travis] [![ESLint Config][eslint-config-image]][eslint-config]
 
-> Handle your .rc files with ease.
+> Handle your rc files with ease.
+
+Raclette is a resolver for JSON or javascript run commands (rc) files of your Node.js libraries or
+applications.
+
+## Features
+
+* JSON, javascript loaders
+* Flowtype definitions
 
 ## Installation
 
@@ -19,6 +26,45 @@ $ yarn add raclette
 ```
 
 ## Usage
+
+Raclette rc files resolution uses *strategies* and *loaders* which you need to
+provide as options.
+
+```js
+import * as rc from 'raclette';
+import type { ResolveResult } from 'raclette';
+
+rc.resolve({
+  name: '.eslintrc',
+  strategies: [
+    rc.strategies.cwd,
+    rc.strategies.home,
+  ],
+  loaders: [
+    rc.loaders.json,
+  ],
+}).then((result: ResolveResult) => {
+  console.log(result);
+}).catch((err) => {
+  console.error(err);
+});
+```
+
+### Strategy
+
+A _strategy_ generate a set of paths where the resolver need to look for rc
+files.
+
+* `rc.strategies.cwd`: Current working directory
+* `rc.strageties.home`: Current user home directry
+
+### Loader
+
+A _loader_ try to load and parse rc files in a given location in the file
+system.
+
+* `rc.loaders.json`: Load rc files in JSON format
+* `rc.loaders.javascript`: Load rc files in javascript format
 
 ## Licences
 

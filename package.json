@@ -1,7 +1,7 @@
 {
   "name": "raclette",
   "version": "0.0.0",
-  "description": "Handle your .rc files with ease",
+  "description": "Handle your rc files with ease",
   "author": "Nicolas Jakob <nicow.jakob@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/njakob/raclette",
