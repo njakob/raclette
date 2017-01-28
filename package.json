@@ -19,7 +19,8 @@
     "helper"
   ],
   "scripts": {
-    "build": "babel -d lib src",
+    "clean": "rimraf lib",
+    "build": "npm run clean && babel -d lib src",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "flow": "flow check",
@@ -46,6 +47,7 @@
   "dependencies": {
     "babel-plugin-module-resolver": "^2.4.0",
     "babel-runtime": "^6.22.0",
-    "eslint-import-resolver-babel-module": "^2.2.1"
+    "eslint-import-resolver-babel-module": "^2.2.1",
+    "rimraf": "^2.5.4"
   }
 }
