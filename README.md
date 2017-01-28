@@ -3,7 +3,7 @@
 
 > Handle your rc files with ease.
 
-Raclette is a resolver for JSON or javascript run commands (rc) files of your Node.js libraries or
+Raclette is a resolver for JSON or javascript rc files of your Node.js libraries or
 applications.
 
 ## Features
