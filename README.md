@@ -1,5 +1,5 @@
 
-# raclette [![Build Status][build-status-image]][travis] [![ESLint Config][eslint-config-image]][eslint-config]
+# raclette [![NPM version][npm-status-image]][npm] [![Build Status][build-status-image]][travis] [![ESLint Config][eslint-config-image]][eslint-config]
 
 > Handle your rc files with ease.
 
